@@ -1,0 +1,92 @@
+import React, { useState, useId } from "react";
+import axios from "axios";
+import Client from "./Client";
+
+
+
+const AjoutClient = () => {
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] = useState('');
+  const [societe, setSociete] = useState('');
+  const [ca, setCa] = useState('');
+  const [ajout, setAjout] = useState(false);
+  const [client, setClient] = useState('');
+
+  const id = useId();
+
+  const modifPrenom = (e) => {
+    setPrenom(e.target.value);
+  }
+  const modifNom = (e) => {
+    setNom(e.target.value);
+  }
+  const modifSociete = (e) => {
+    setSociete(e.target.value);
+  }
+  const modifCa = (e) => {
+    setCa(e.target.value);
+  }
+
+  const ajoutContact = (e) => {
+    e.preventDefault();
+
+    axios.post("http://localhost:4000/clients", {
+      id,
+      prenom,
+      nom,
+      societe,
+      ca,
+    }).then((res) => {
+      setAjout(true);
+      setClient(res.data);
+      setPrenom("");
+      setNom("");
+      setSociete("");
+      setCa("");
+    }).catch(err => {
+      console.log(err);
+    });
+  };
+
+
+
+  const form = <form>
+    <div class="form-group">
+      <label for="prenom">Prénom</label>
+      <input type="text" className="form-control" id="prenom" onClick={modifPrenom} />
+    </div>
+
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" className="form-control" id="nom" onClick={modifNom} />
+    </div>
+
+    <div class="form-group">
+      <label for="societe">Société</label>
+      <input type="text" className="form-control" id="societe" onClick={modifSociete} />
+    </div>
+
+    <div class="form-group">
+      <label for="ca">CA</label>
+      <input type="number" className="form-control" id="ca" onClick={modifCa} />
+    </div>
+    <input type="submit" class="btn btn-primary m-3" value="Ajouter" onClick={ajoutContact} />
+    <input type="reset" class="btn btn-danger m-3" value="Réinitialiser" />
+  </form>;
+
+
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6 offset-md-3">
+          {!ajout ? form :
+            <Client key={client.id} client={client} />
+          }
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AjoutClient;
