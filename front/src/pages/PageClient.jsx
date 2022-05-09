@@ -1,14 +1,14 @@
 import React from "react";
 import Header from "./../components/Header";
-import Recherche from "./../components/Recherche";
+import VoirClient from "./../components/VoirClient";
 
 const Home = () => {
   return (
-		<div>
-			<Header />
-			<Recherche />
-		</div>
+    <div>
+      <Header />
+      <VoirClient />
+    </div>
   );
 }
- 
+
 export default Home;
