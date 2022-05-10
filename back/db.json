@@ -1,13 +1,6 @@
 {
   "clients": [
     {
-      "id": 1,
-      "nom": "Durand",
-      "prenom": "Léo",
-      "societe": "Calypso",
-      "ca": 154564
-    },
-    {
       "id": 2,
       "nom": "Martin",
       "prenom": "Gabriel",
@@ -69,27 +62,6 @@
       "prenom": "Lee",
       "societe": "China-Town",
       "ca": 231314
-    },
-    {
-      "id": ":r1:",
-      "prenom": "Rerum reprehenderit",
-      "nom": "Quia dolorem non ten",
-      "societe": "Consectetur repellen",
-      "ca": "14"
-    },
-    {
-      "id": ":r3:",
-      "prenom": "Dolores tenetur esse",
-      "nom": "Reiciendis consequat",
-      "societe": "Ut laborum A labore",
-      "ca": "64"
-    },
-    {
-      "id": ":r5:",
-      "prenom": "Nisi et fugit labor",
-      "nom": "Inventore doloribus ",
-      "societe": "Qui neque explicabo",
-      "ca": "30"
     }
   ]
 }
