@@ -7,7 +7,7 @@ const Client = ({ client }) => {
       <div class="card-body">
         <h5 class="card-title">{client.prenom} {client.nom}</h5>
         <p class="card-text">{client.societe}  - {client.ca}</p>
-        <Link to={`clients/${client.id}`} className="btn btn-primary">Voir</Link>
+        <Link to={`/clients/${client.id}`} className="btn btn-primary">Voir</Link>
       </div>
     </div>
   );
