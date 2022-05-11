@@ -25,7 +25,8 @@ const VoirClient = () => {
             Société : {client.societe} <br/>
             CA : {client.ca}
         </p>
-          <Link to={`/clients/supp/${client.id}`} className="btn btn-danger">Supprimer</Link>
+          <Link to={`/clients/supp/${client.id}`} className="btn btn-danger mr-5">Supprimer</Link>
+          <Link to={`/clients/maj/${client.id}`} className="btn btn-info ml-5">Modifier</Link>
       </div>
     </div>
     </div>

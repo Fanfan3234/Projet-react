@@ -53,24 +53,24 @@ const AjoutClient = () => {
   const form = <form>
     <div class="form-group">
       <label for="prenom">Prénom</label>
-      <input type="text" className="form-control" id="prenom" onClick={modifPrenom} />
+      <input type="text" className="form-control" id="prenom" onChange={modifPrenom} />
     </div>
 
     <div class="form-group">
       <label for="nom">Nom</label>
-      <input type="text" className="form-control" id="nom" onClick={modifNom} />
+      <input type="text" className="form-control" id="nom" onChange={modifNom} />
     </div>
 
     <div class="form-group">
       <label for="societe">Société</label>
-      <input type="text" className="form-control" id="societe" onClick={modifSociete} />
+      <input type="text" className="form-control" id="societe" onChange={modifSociete} />
     </div>
 
     <div class="form-group">
       <label for="ca">CA</label>
-      <input type="number" className="form-control" id="ca" onClick={modifCa} />
+      <input type="number" className="form-control" id="ca" onChange={modifCa} />
     </div>
-    <input type="submit" class="btn btn-primary m-3" value="Ajouter" onClick={ajoutContact} />
+    <input type="submit" class="btn btn-primary m-3" value="Ajouter" onChange={ajoutContact} />
     <input type="reset" class="btn btn-danger m-3" value="Réinitialiser" />
   </form>;
 
