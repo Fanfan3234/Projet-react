@@ -70,7 +70,7 @@ const AjoutClient = () => {
       <label for="ca">CA</label>
       <input type="number" className="form-control" id="ca" onChange={modifCa} />
     </div>
-    <input type="submit" class="btn btn-primary m-3" value="Ajouter" onChange={ajoutContact} />
+    <input type="submit" class="btn btn-primary m-3" value="Ajouter" onClick={ajoutContact} />
     <input type="reset" class="btn btn-danger m-3" value="Réinitialiser" />
   </form>;
 

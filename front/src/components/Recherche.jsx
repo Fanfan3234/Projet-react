@@ -7,6 +7,11 @@ const Recherche = () => {
 	const [rechercheClients, setRechercheClients] = useState([]);
 	const [tri, setTri] = useState(null);
 
+	const [societe, setSociete] = useState('');
+	const [prenom, setPrenom] = useState('');
+	const [nom, setNom] = useState('');
+
+
 	useEffect(() => {
 		axios.get(`http://localhost:4000/clients`).then((res) => {
 			setClients(res.data);
@@ -17,18 +22,35 @@ const Recherche = () => {
 	}, []);
 
 	const chercher = (e) => {
-		const rech = e.target.value;
-		if (rech !== '') {
+		e.preventDefault();
+		if (societe !== '' || nom !== '' || prenom !== '') {
 			const rtRecherche = clients.filter((client) => {
-				return client.societe.toLowerCase().startsWith(rech.toLowerCase());
-			})
-			console.log(rtRecherche);
+				return client.societe.toLowerCase().startsWith(societe.toLowerCase()) && client.prenom.toLowerCase().startsWith(prenom.toLowerCase()) && client.nom.toLowerCase().startsWith(nom.toLowerCase());
+			});
 			setRechercheClients(rtRecherche);
 		}
 		else {
 			setRechercheClients(clients);
 		}
+
 	}
+
+	const changerRecherche = (e) => {
+		if (e.target.getAttribute("id") === "societe") {
+			setSociete(e.target.value);
+			}
+		if (e.target.getAttribute("id") === "prenom") {
+			setPrenom(e.target.value);
+		}
+		if (e.target.getAttribute("id") === "nom") {
+			setNom(e.target.value);
+		}
+		if (societe === '' && nom === '' && prenom === '') {
+			setRechercheClients(clients);
+		}
+		chercher();
+	}
+
 
 	const typeTri = (e) => {
 		setTri(e.target.getAttribute("value"));
@@ -44,12 +66,14 @@ const Recherche = () => {
 
 	return (
 		<div>
-			<div className="container">
+			<div className="container mt-5">
 				<div className="row">
 					<form>
 						<div className="form-group mb-2 col-md-4 offset-md-4 d-flex justify-content-between">
-							<input type="text" className="form-control" id="societe" onChange={chercher} />
-							<input type="submit" className="btn btn-primary" value="recherche" />
+							<input type="text" className="form-control" placeholder="Société" id="societe" onChange={changerRecherche} />
+							<input type="text" className="form-control" placeholder="Prénom" id="prenom" onChange={changerRecherche} />
+							<input type="text" className="form-control" placeholder="Nom" id="nom" onChange={changerRecherche} />
+							<input type="submit" className="btn btn-primary" value="recherche" onClick={chercher} />
 						</div>
 					</form>
 				</div>
@@ -71,7 +95,7 @@ const Recherche = () => {
 								return (
 									<Client key={client.id} client={client} />
 								);
-					})}
+							})}
 				</div>
 			</div>
 		</div>
